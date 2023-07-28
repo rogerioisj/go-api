@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-func Hello(text string) string {
-	message := fmt.Sprintf("Received message: %s", text)
+func Hello(text *string) string {
+	message := fmt.Sprintf("Received message: %s", *text)
 
 	return message
 }
@@ -16,5 +16,5 @@ func main() {
 	fmt.Println("Plesae, insert your message: ")
 	fmt.Scanln(&message)
 
-	fmt.Println(Hello(message))
+	fmt.Println(Hello(&message))
 }

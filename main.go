@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"roger.com/api/controllers"
+	"roger.com/api/src/controllers"
 )
 
 func main() {

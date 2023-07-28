@@ -2,19 +2,23 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 )
 
-func Hello(text *string) string {
-	message := fmt.Sprintf("Received message: %s", *text)
+func helloHandler(writer http.ResponseWriter, request *http.Request) {
+	fmt.Print("HelloHandle")
+	fmt.Print("Request event: ", request)
 
-	return message
+	fmt.Fprintf(writer, "BOM DIA FILHA DA PUTA!")
 }
 
 func main() {
-	var message string
-	fmt.Println("Hello!")
-	fmt.Println("Plesae, insert your message: ")
-	fmt.Scanln(&message)
+	http.HandleFunc("/", helloHandler)
 
-	fmt.Println(Hello(&message))
+	fmt.Print("Server running on port 3001")
+
+	if err := http.ListenAndServe(":3001", nil); err != nil {
+		log.Fatal(err)
+	}
 }
